@@ -1,0 +1,125 @@
+{
+  "name": "LLM Basico",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        -120
+      ],
+      "id": "67ccd57e-64e7-44ca-b440-d552c7c6b2d7",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -280,
+        -140
+      ],
+      "id": "83a289eb-2577-423f-93ab-61a9074ba952",
+      "name": "When chat message received",
+      "webhookId": "d9bec31f-e654-4aaa-ab81-dd61edab71eb"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        -140,
+        -260
+      ],
+      "id": "a8f243d7-7cea-4b3d-9f5e-afeec72cf3e2",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-3.5-turbo-1106",
+          "mode": "list",
+          "cachedResultName": "gpt-3.5-turbo-1106"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -60,
+        160
+      ],
+      "id": "3d7f8dff-640b-4cbf-8472-9c041fe6f8d8",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "v3OLSBGzv5n3nREO",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "4c095682-e82b-49bf-97ac-76f2f4a5ebaa",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "31b026f12e15723f9300c33e953485ad365b6c456a1686d0e52f2336b5b0d00d"
+  },
+  "id": "9LTrfE26oJNLqkVJ",
+  "tags": [
+    {
+      "createdAt": "2025-04-06T12:59:07.381Z",
+      "updatedAt": "2025-04-06T12:59:07.381Z",
+      "id": "VbU1jSkJjiX9RsxN",
+      "name": "OpenAI"
+    }
+  ]
+}
